@@ -1,0 +1,30 @@
+.container{
+    width:500px;
+    padding:20px 15px;
+    margin:0px auto;
+}
+
+.top-wrapper{
+    font-size: 20px;
+}
+
+.asterisk{
+    color:red;
+}
+
+.btn{
+    padding:8px 14px;
+    color:black;
+    border-radius: 5px;
+}
+
+
+
+.orange{
+    background-color: orange;
+}
+
+.aqua{
+    background-color: aqua;
+    
+}

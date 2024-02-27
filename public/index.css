@@ -1,0 +1,36 @@
+.container{
+    width:500px;
+    padding:20px 15px;
+    margin:0px auto;
+}
+
+.form-group{
+    display:flex;
+}
+
+.btn{
+    border-radius: 5px;
+}
+
+.white{
+    color:black;
+    background-color: white;
+}
+
+.orange{
+    color:black;
+    background-color: orange;
+}
+
+.aqua{
+    color:black;
+    background-color: aqua;
+    border-width:1px;
+    border-color:darkgray;
+    text-decoration: none;
+}
+
+.red{
+    color:white;
+    background-color: red;
+}
