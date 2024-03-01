@@ -31,9 +31,9 @@ class Product extends Model
        
     }
 
-    public function uprequestProduct($request,$id){
+    public function updateProduct($request,$id,$image_path){
 
-        DB::table('$products')->where('id',$request->id)->uprequest([
+        DB::table('products')->where('id',$id)->update([
             'product_name'=>$request->product_name,
             'company_id'=>$request->company_name,
             'price'=>$request->price,

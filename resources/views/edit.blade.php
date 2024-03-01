@@ -12,7 +12,7 @@
         <div class="top-wrapper">
             <div class="container">
                 <h1>商品情報編集</h1>
-            <form class="edit-form" method="POST" action="update" enctype="multipart/form-data">
+            <form class="edit-form" method="POST" action="{{route('update',['id'=>$products->id])}}" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
                     <label for="id">id</label>
@@ -27,11 +27,20 @@
                 </div>
                 <div class="form-group">
                 <label for="company_name">メーカー名<sup class="asterisk">&#42;</sup></label>
+
                     <select name="company_name" id="company_name">
                         @foreach($companies as $company)
-                        <option value="{{$company->id}}" @if(old($products->company->company_name) === $products->company_name) selected @endif>{{$products->company->company_name}}</option>
+                        @if ($products->company->company_name == $company->company_name)
+                        <option value="{{$company->id}}"selected>
+                            {{$company->company_name}}
+                        </option>
+                        @else<option value="{{$company->id}}">
+                            {{$company->company_name}}
+                        </option>
+                        @endif
                         @endforeach
                      </select>
+
                       @if($errors->has('company_name'))
                     <p>{{$errors->first('company_name')}}</p>
                     @endif
@@ -56,7 +65,7 @@
                 </div>
                 <div class="form-group">
                     <label for="img">商品画像</lebal>
-                    <input type="file" name="img" id="img" value="{{ asset($products->img_path)}}" >
+                    <input type="file" name="img" id="img">
                 </div>
                 <div class="btn-wrapper">
                     <input type="submit" value="更新" class="btn orange" id="update">

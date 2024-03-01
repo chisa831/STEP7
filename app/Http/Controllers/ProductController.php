@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\sale;
@@ -75,25 +75,28 @@ class ProductController extends Controller
     }
 
     public function update(ProductRequest $request,$id){
-
-        $products=Product::find($id);
-        $companies=Company::all();
-
         
+        $image=$request->file('img');
+
+        $file_name=$image->getClientOriginalName();
+        
+        $image->storeAs('public/images',$file_name);
+
+        $image_path='storage/images/'.$file_name;
 
         DB::beginTransaction();
 
         try{
-            //登録処理呼び出し
+            
             $model=new Product();
-            $model->updateProduct($request,$id);
+            $model->updateProduct($request,$id,$image_path);
             DB::commit();
         }catch(\Exception $e){
             DB::rollback();
-            return back();
+            
         }
 
-        return view('edit',compact('products','companies'));
+        return redirect()->route('edit',['id'=>$id]);
 
     }
 

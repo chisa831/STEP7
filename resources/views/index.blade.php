@@ -14,7 +14,7 @@
                 <form action="{{ route('search') }}" method="get">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="keyword">
+                        <input type="search" name="keyword">
                             <select name="company_id" id="company_id">
                                 <option value="">選択してください</option>
                                 @foreach($companies as $company)
@@ -35,7 +35,7 @@
                                 <th>価格</th>
                                 <th>在庫数</th>
                                 <th>メーカー名</th>
-                                <th><button class="btn orange" id="create">新規登録</button></th>
+                                <th><a href="{{route('create')}}" class="btn orange" id="create">新規登録</a></th>
                             </tr>
                         </thead>
                         <tbody>
